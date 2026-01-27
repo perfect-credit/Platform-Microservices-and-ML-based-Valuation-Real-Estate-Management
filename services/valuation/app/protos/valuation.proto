@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package valuation;
+
+message PropertyValuationRequest {
+    string property_id_nma = 1;
+    string date = 2;
+}
+
+message UnitValuationRequest {
+    int64 unit_id = 1;
+    string date = 2;
+}
+
+message ValuationResponse {
+    string valuations = 1;
+}
+
+service ValuationService {
+    rpc GetPropertyValuation(PropertyValuationRequest) returns (ValuationResponse) {}
+    rpc GetUnitValuation(UnitValuationRequest) returns (ValuationResponse) {}
+}

@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "valuation"
+version = "0.1.0"
+description = "A gRPC service to provide secure API for all valuation models"
+authors = ["rifatrakib <Rakib.1508@outlook.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+grpcio = "^1.68.1"
+grpcio-tools = "^1.68.1"
+pydantic-settings = "^2.6.1"
+catboost = "^1.2.7"
+pandas = "^2.2.3"
+scikit-learn = "^1.6.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

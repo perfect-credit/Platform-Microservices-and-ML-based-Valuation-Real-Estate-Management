@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package auth;
+
+option go_package = "./proto;service";
+
+// The request message containing the user's phone number.
+message SendOtpRequest {
+    string phone_number = 1;
+}
+
+// The response message containing the status of the registration.
+message NoTokenResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+// The request message containing the user's phone number and OTP.
+message RegisterRequest {
+    string phone_number = 1;
+    string name = 2;
+    string otp = 3;
+}
+
+// The request message containing the user's phone number and OTP for login.
+message LoginRequest {
+    string phone_number = 1;
+    string otp = 2;
+}
+
+// The response message containing the status of the login.
+message TokenResponse {
+    bool success = 1;
+    string message = 2;
+    string token = 3; // JWT or any other token for session management
+}
+
+message ValidateRequest {
+    string token = 1;
+}
+
+message ValidateResponse {
+    repeated string permissions = 1;
+}
+
+// The authentication service definition.
+service AuthService {
+    // Send an OTP for login with a phone number.
+    rpc SendOtp (SendOtpRequest) returns (NoTokenResponse);
+
+    // Registers a user with a phone number.
+    rpc Register (RegisterRequest) returns (TokenResponse);
+
+    // Logs in a user with a phone number and OTP.
+    rpc Login (LoginRequest) returns (TokenResponse);
+
+    // Verify and validate a token
+    rpc Validate (ValidateRequest) returns (ValidateResponse);
+}

@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "realestate"
+version = "0.1.0"
+description = "A gRPC service to provide CRUD functionalities to various realestate entities"
+authors = ["rifatrakib <Rakib.1508@outlook.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+grpcio = "^1.68.1"
+grpcio-tools = "^1.68.1"
+beanie = "^1.28.0"
+pydantic-settings = "^2.6.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

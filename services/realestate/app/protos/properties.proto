@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package realestate;
+
+message RangeQuery {
+    float min = 1;
+    float max = 2;
+}
+
+message Geometry {
+    repeated float coordinates = 1;
+}
+
+message SinglePropertyRequest {
+    string property_id_nma = 1;
+}
+
+message FilterPropertyRequest {
+    RangeQuery area = 1;
+    int32 page = 2;
+}
+
+message PropertyUnitsRequest {
+    string property_id_nma = 1;
+    int32 page = 2;
+}
+
+message SingleUnitRequest {
+    int64 unit_id = 1;
+}
+
+message OwnedItemsRequest {
+    string owner_id = 1;
+    int32 page = 2;
+}
+
+message Response {
+    string data = 1;
+}
+
+service PropertyService {
+    rpc SearchProperties(FilterPropertyRequest) returns (Response);
+    rpc CountProperties(FilterPropertyRequest) returns (Response);
+    rpc GetProperty(SinglePropertyRequest) returns (Response);
+
+    rpc GetPropertyUnits(PropertyUnitsRequest) returns (Response);
+    rpc CountPropertyUnits(PropertyUnitsRequest) returns (Response);
+    rpc GetUnit(SingleUnitRequest) returns (Response);
+
+    rpc GetOwnedProperties(OwnedItemsRequest) returns (Response);
+    rpc CountOwnedProperties(OwnedItemsRequest) returns (Response);
+
+    rpc GetHistoricValuations(SingleUnitRequest) returns (Response);
+}

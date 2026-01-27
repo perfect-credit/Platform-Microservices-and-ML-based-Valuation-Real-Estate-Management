@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "acl"
+version = "0.1.0"
+description = "A gRPC service to handle authentication- and authorization-related functionalities"
+authors = ["rifatrakib <Rakib.1508@outlook.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+grpcio = "^1.68.1"
+grpcio-tools = "^1.68.1"
+pydantic-settings = "^2.6.1"
+beanie = "^1.27.0"
+pyjwt = {extras = ["crypto"], version = "^2.10.1"}
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
