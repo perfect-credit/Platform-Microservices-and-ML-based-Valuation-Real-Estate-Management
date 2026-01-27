@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    env_file:
+      - ./backend/.env
+    ports:
+      - "8000:8000"
+    depends_on:
+      - acl
+      - realestate
+      - valuation
+
+  acl:
+    build:
+      context: ./services/acl
+      dockerfile: Dockerfile
+    env_file:
+      - ./services/acl/.env
+    ports:
+      - "50051:50051"
+
+  realestate:
+    build:
+      context: ./services/realestate
+      dockerfile: Dockerfile
+    env_file:
+      - ./services/realestate/.env
+    ports:
+      - "50052:50052"
+
+  valuation:
+    build:
+      context: ./services/valuation
+      dockerfile: Dockerfile
+    env_file:
+      - ./services/valuation/.env
+    ports:
+      - "50053:50053"
