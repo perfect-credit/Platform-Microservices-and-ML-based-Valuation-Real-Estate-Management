@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "backend"
+version = "0.1.0"
+description = "The entrypoint API for the spm service side applications"
+authors = ["rifatrakib <Rakib.1508@outlook.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = {extras = ["all"], version = "^0.115.6"}
+aiofiles = "^24.1.0"
+grpcio = "^1.68.1"
+grpcio-tools = "^1.68.1"
+cohere = "^5.13.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
